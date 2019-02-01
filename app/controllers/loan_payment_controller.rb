@@ -4,6 +4,8 @@ class LoanPaymentController < ApplicationController
     @years = params.fetch("number_of_years").to_i
     @principal = params.fetch("principal_value").to_f
 
+  calculation=(@apr/100/12*@principal)/(1-(1+(@apr/12/100))**(-@years*12))
+  
     # ================================================================================
     # Your code goes below.
     # The annual percentage rate the user input is in the decimal @apr.
@@ -11,7 +13,7 @@ class LoanPaymentController < ApplicationController
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
 
-    @monthly_payment = "Replace this string with your answer"
+    @monthly_payment = calculation
 
     # ================================================================================
     # Your code goes above.
