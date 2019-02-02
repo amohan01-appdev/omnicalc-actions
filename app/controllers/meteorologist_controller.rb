@@ -12,6 +12,11 @@ class MeteorologistController < ApplicationController
     #   characters removed, is in the string sanitized_street_address.
     # ==========================================================================
 
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address="+ sanitized_street_address +"&key=AIzaSyBr-0XDfztIIUGyPRfa1D5KfPvURvAk2e4"
+    parsed_data = JSON.parse(open(url).read)
+    latitude = parsed_data.dig("results", 0, "geometry", "location", "lat")
+    longitude = parsed_data.dig("results", 0, "geometry", "location", "lng")
+    
     @current_temperature = "Replace this string with your answer"
 
     @current_summary = "Replace this string with your answer"
