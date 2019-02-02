@@ -12,12 +12,13 @@ class TimeBetweenController < ApplicationController
     #   number of seconds as a result.
     # ================================================================================
 
-    #@seconds = time.parse(@ending)-time.parse(@starting).to_f
-    #@minutes = @seconds/60
-    #@hours = @minutes/60
-    #@days = @hours/24
-    #@weeks = @days/7
-    #@years = @weeks/52
+
+    @seconds = @ending-@starting
+    @minutes = @seconds/60
+    @hours = @minutes/60
+    @days = @hours/24
+    @weeks = @days/7
+    @years = @weeks/52
 
     # ================================================================================
     # Your code goes above.

@@ -35,13 +35,13 @@ class StatsController < ApplicationController
 
     @median = median
 
-    @sum = "Replace this string with your answer"
+    @sum = @numbers.sum
 
     @mean = @numbers.sum/@numbers.count
 
     step_1 = []            
     @numbers.each do |num|      
-    step_2 = (num - mean)**2            
+    step_2 = (num - @mean)**2            
     step_1.push(step_2)
     end
 
@@ -49,18 +49,16 @@ class StatsController < ApplicationController
 
     @standard_deviation = @variance**0.5
 
-    frequency_numbers = @numbers.count(@numbers[0])
-    mode_numbers=@numbers[0]
+  mode = @numbers.at(0)
+  @numbers.each do |number|
+   
+   if @numbers.count(number) > @numbers.count(mode)
+   mode = number 
+   end 
+  end
+
+    @mode = mode
     
-    @numbers.each do |num|
-    if @numbers.count(num) > frequency_numbers
-      frequency_numbers = @numbers.count(num)
-    end
-    mode_numbers=num
-    end
-
-    @mode = mode_numbers
-
     # ================================================================================
     # Your code goes above.
     # ================================================================================
