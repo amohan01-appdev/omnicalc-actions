@@ -9,16 +9,16 @@ class WordCountController < ApplicationController
     # The special word the user input is in the string @special_word.
     # ================================================================================
 
-  tl_text=@text.strip
-  clean_text=tl_text.gsub(/[^a-z0-9\s]/i, "") 
+  clean_text=@text.gsub(/[^a-z0-9\s]/i, "").strip
+  clean_text2=@text.gsub(/[^a-z0-9\s]/i, "")
 
-    @word_count = @text.split.count
+    @word_count = clean_text2.split.count
 
     @character_count_with_spaces = @text.length
 
-    @character_count_without_spaces = clean_text.gsub(/\s+/, "").length
+    @character_count_without_spaces = @text.gsub(/\s+/, "").strip.length
 
-    @occurrences = clean_text.split.count(@special_word)
+    @occurrences = clean_text2.split.count(@special_word)
 
     # ================================================================================
     # Your code goes above.
